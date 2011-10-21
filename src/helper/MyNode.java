@@ -7,6 +7,7 @@ public class MyNode {
 	private boolean state=false;
 
 	private double loading=0.0;
+	private int NghbrCnt =0;
 	
 	public MyNode(MyNode node1){
 		this.id=node1.id;
@@ -36,4 +37,14 @@ public class MyNode {
 	public int getId() {
 		return id;
 	}
+
+	public void setNghbrCnt(int nghbrCnt) {
+		NghbrCnt = nghbrCnt;
+	}
+
+	public int getNghbrCnt() {
+		return NghbrCnt;
+	}
+	
+	
 }

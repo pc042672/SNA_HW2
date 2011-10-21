@@ -5,13 +5,13 @@ import java.io.*;
 import java.util.*;
 import edu.uci.ics.jung.graph.*;
 
-public abstract class Model {
+public abstract class Model   {
 
 	protected Map<Integer, MyNode> map = new TreeMap<Integer, MyNode>();
 	protected DirectedGraph<MyNode,MyLink> graph = new DirectedSparseGraph<MyNode,MyLink>(); 
 	protected ArrayList<MyNode> hasInfected= new ArrayList<MyNode>();
 	protected ArrayList<MyNode> infectedNodesQueue = new ArrayList<MyNode>();
-	
+	protected ArrayList<Integer[]> nghcnt = new ArrayList<Integer[]>();
 	// get Initial Graph
 	public void getGraph(String s)throws IOException{
 		ReadGraph reader = new ReadGraph(s);
@@ -30,6 +30,14 @@ public abstract class Model {
 			graph.addEdge(new MyLink(), node0, node1);
 			//System.out.println(temp[0]+"   "+temp[1]);
 		}
+		
+		//save the count of neighbor [Count ,Id]
+		for (MyNode vtemp : graph.getVertices()){
+			vtemp.setNghbrCnt(graph.getNeighborCount(vtemp));
+		}
+		
+
+		
 	}
 	
 	// get Initial infected nodes
